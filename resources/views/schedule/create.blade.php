@@ -4,15 +4,21 @@
 
 @section('content')
     <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-4">Neue Schicht erstellen</h1>
         <form action="{{ route('schedule.store') }}" method="POST">
             @csrf
             <div class="mb-4">
                 <label for="date" class="block text-gray-700">Datum</label>
-                <input type="date" name="date" id="date" class="mt-1 block w-full" required>
+                <input type="date" name="date" id="date" class="mt-1 block w-full">
             </div>
             <div class="mb-4">
                 <label for="shift_type" class="block text-gray-700">Schichttyp</label>
-                <input type="text" name="shift_type" id="shift_type" class="mt-1 block w-full" required>
+                <select name="shift_type" id="shift_type" class="mt-1 block w-full">
+                    <option value="Frühschicht">Frühschicht</option>
+                    <option value="Normalschicht">Normalschicht</option>
+                    <option value="Spätschicht">Spätschicht</option>
+                    <option value="Nachtschicht">Nachtschicht</option>
+                </select>
             </div>
             <div class="mb-4">
                 <label for="employee_id" class="block text-gray-700">Mitarbeiter</label>

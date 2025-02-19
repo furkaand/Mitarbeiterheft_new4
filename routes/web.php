@@ -33,8 +33,14 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
     Route::get('/your-instructions/{id}', [YourInstructionController::class, 'show'])->name('your_instructions.show');
     Route::put('/your-instructions/{id}', [YourInstructionController::class, 'update'])->name('your_instructions.update');
 
+    // Ansicht für Mitarbeiter
     Route::get('/schedule', [ScheduleController::class, 'index'])->name('schedule.index');
+
+    // Ansicht für Abteilungsleiter
+    Route::get('/schedule/manage', [ScheduleController::class, 'manage'])->name('schedule.manage');
     Route::get('/schedule/create', [ScheduleController::class, 'create'])->name('schedule.create');
     Route::post('/schedule', [ScheduleController::class, 'store'])->name('schedule.store');
+
+
 
 });
