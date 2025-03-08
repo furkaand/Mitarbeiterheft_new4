@@ -20,10 +20,25 @@
 
             <div class="mb-4">
                 <label for="content" class="block text-gray-700">Textfeld</label>
+                <!-- Textarea für TinyMCE -->
                 <textarea name="content" id="content" class="w-full border-gray-300 rounded-md shadow-sm" rows="10" required></textarea>
             </div>
 
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Artikel erstellen</button>
         </form>
     </div>
+
+    <!-- TinyMCE CDN -->
+    <script src="https://cdn.tiny.cloud/1/o2049f5wm8swfd0pj11ayyaxqljhi12pxxibeqn2dyejy2e3/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        // TinyMCE initialisieren
+        tinymce.init({
+            selector: '#content', // Textarea-ID
+            plugins: 'advlist autolink lists link image charmap preview anchor table',
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            height: 400,
+            menubar: false,
+            branding: false,
+        });
+    </script>
 @endsection
