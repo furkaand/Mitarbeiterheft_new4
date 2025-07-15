@@ -1,6 +1,5 @@
 <?php
 
-// database/migrations/xxxx_xx_xx_create_articles_table.php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
-            $table->string('title');
-            $table->text('content');
-            $table->foreignId('user_id')->constrained();
-            $table->string('status')->default('pending');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('employee_number')->unique();
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('employees');
     }
 };

@@ -46,18 +46,4 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
     
-    public function shifts()
-    {
-        return $this->hasMany(Shift::class);
-    }
-
-    public function todos()
-    {
-        return $this->hasMany(Todo::class);
-    }
-
-    public function calendarEvents()
-    {
-        return $this->hasMany(CalendarEvent::class);
-    }
 }
