@@ -20,7 +20,7 @@
                     <tr>
                         <td class="py-2 px-4 border-b">{{ $shift->date }}</td>
                         <td class="py-2 px-4 border-b">{{ $shift->shift_type }}</td>
-                        <td class="py-2 px-4 border-b">{{ $shift->employee->first_name }} {{ $shift->employee->last_name }}</td>
+                        <td class="py-2 px-4 border-b">{{ $shift->user->firstname }} {{ $shift->user->lastname }}</td>
                     </tr>
                 @endforeach
             </tbody>

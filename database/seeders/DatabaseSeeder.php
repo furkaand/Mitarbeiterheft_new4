@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'furkan@dogan.de',
             'password' => bcrypt('furkan@dogan.de'),
         ]);
+
+        // $this->call(TestShiftSeeder::class);
     }
 }

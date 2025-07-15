@@ -1,10 +1,19 @@
 @extends('templates.layout')
 
-@section('title', 'Neue Schicht erstellen')
-
 @section('content')
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-2xl font-bold mb-4">Neue Schicht erstellen</h1>
+        <!-- Back button -->
+        <div class="mb-6">
+            <button onclick="goBackToDashboard()" class="flex items-center text-blue-600 hover:text-blue-800 text-base font-medium">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+                Zurück
+            </button>
+        </div>
+
+        <h2 class="text-3xl font-bold text-blue-600 mb-6">Neue Schicht erstellen</h2>
+
         <form action="{{ route('schedule.store') }}" method="POST">
             @csrf
             <div class="mb-4">
@@ -21,10 +30,10 @@
                 </select>
             </div>
             <div class="mb-4">
-                <label for="employee_id" class="block text-gray-700">Mitarbeiter</label>
-                <select name="employee_id" id="employee_id" class="mt-1 block w-full" required>
-                    @foreach($employees as $employee)
-                        <option value="{{ $employee->id }}">{{ $employee->first_name }} {{ $employee->last_name }}</option>
+                <label for="user_id" class="block text-gray-700">Mitarbeiter</label>
+                <select name="user_id" id="user_id" class="mt-1 block w-full" required>
+                    @foreach($users as $user)
+                        <option value="{{ $user->id }}">{{ $user->firstname }} {{ $user->lastname }}</option>
                     @endforeach
                 </select>
             </div>
@@ -33,4 +42,24 @@
             </div>
         </form>
     </div>
+
+<script>
+function goBackToDashboard() {
+    // Check if we came from within the same module or directly
+    const referrer = document.referrer;
+    const currentPath = window.location.pathname;
+    
+    // If we came from the dashboard or no referrer, go to dashboard
+    if (!referrer || referrer.includes('/') && !referrer.includes(currentPath.split('/')[1])) {
+        window.location.href = "{{ route('dashboard') }}";
+    } else {
+        // If we're deep in the module, go back one step, otherwise go to dashboard
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location.href = "{{ route('dashboard') }}";
+        }
+    }
+}
+</script>
 @endsection

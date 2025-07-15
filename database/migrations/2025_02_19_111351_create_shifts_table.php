@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('date')->nullable();
             $table->string('shift_type')->nullable();
-            $table->foreignId('employee_id')->constrained('employees')->nullable();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }
