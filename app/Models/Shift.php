@@ -9,10 +9,10 @@ class Shift extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date', 'shift_type', 'employee_id'];
+    protected $fillable = ['date', 'shift_type', 'user_id'];
 
-    public function employee()
+    public function user()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(User::class);
     }
 }

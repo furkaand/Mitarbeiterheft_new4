@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('shifts', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->string('shift_type');
-            $table->foreignId('employee_id')->constrained('employees');
+            $table->date('date')->nullable();
+            $table->string('shift_type')->nullable();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */
